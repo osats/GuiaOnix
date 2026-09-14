@@ -1,0 +1,38 @@
+HOTEL ONIX — DIRETÓRIO E GUIA MULTILINGUE
+
+No GitHub Pages, copiar os HTML, CSS, JS e a pasta assets para a raiz do repositório GuiaOnix.
+A página principal do guia é agora index.html (antes acompanhamento.html). Abre a raiz do repositório diretamente no menu inicial com símbolos para escolher No hotel, Guia da região, Restaurante & Bar e Massagens.
+ATENÇÃO: se o repositório já tiver um index.html (outro menu do hotel), este substitui-o. Faz backup do antigo antes de copiar, ou decide qual queres como página inicial.
+Idiomas: index.html / index-en.html / index-es.html / index-fr.html.
+
+Idiomas PT, EN, ES e FR. Deteção inicial pelo navegador, escolha manual no cabeçalho e preferência guardada neste navegador. Ao mudar de idioma no guia, mantém-se a secção. Sem JavaScript, todas as páginas continuam legíveis e os links de idioma funcionam.
+
+Diretório com 13 secções sempre abertas. Informação operacional fornecida pelo hotel. Verificar a vigência das regras e serviços antes de publicar. Não inclui room service, buffet, jornais, fax, fotocópias nem babysitting.
+
+Seis roteiros traduzidos, incluindo etapas, conselhos, legendas e avisos. Sem ligações de reserva. Imagens locais e tratamento CSS não destrutivo. Confirmar os direitos de republicação com os titulares; imagens-fontes.json regista as origens.
+
+Cada página permite imprimir/guardar PDF através do navegador, com estilo claro para A4. A tabela de massagens mantém as 11 opções, os preços e as durações do HTML aprovado, em português; a navegação está nos quatro idiomas. Esta atualização não altera as ementas.
+
+Pré-visualização: extrair o ZIP e abrir index.html.
+As páginas não precisam de Python nem de servidor de aplicação.
+
+─────────────────────────────────────────────────────────────
+ATUALIZAÇÃO: RESTAURANTE & BAR
+─────────────────────────────────────────────────────────────
+Nova secção "Restaurante & Bar" (restaurante.html + -en/-es/-fr) com três
+separadores: Ementa do dia, Carta Restaurante e Bar Grevin.
+
+Os conteúdos são carregados automaticamente a partir dos JSON publicados
+pela app DashboardOnix no GitHub Pages:
+   menu_executivo.json   (muda diariamente)
+   restaurante.json      (só quando a carta muda)
+   grevin.json           (só quando a carta muda)
+
+A origem está definida no topo de restaurante.js na constante CARTAS_BASE
+(por omissão https://osats.github.io/EmentaOnix/). Ajustar se mudar de repo.
+
+Ementas apenas em PT e EN. Nas versões FR e ES a carta aparece em inglês,
+com indicação discreta de que está disponível em português e inglês.
+Layout próprio para telemóvel (não usa o HTML de impressão).
+O link foi adicionado ao menu de todas as páginas e um cartão em index.
+Copiar também restaurante.js para a raiz do repositório do guia.
