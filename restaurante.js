@@ -163,15 +163,87 @@
     const r = await fetch(CARTAS_BASE + nome + "?t=" + Date.now(), { cache: "no-store" });
     if (!r.ok) throw new Error(r.status); return r.json();
   }
+  // All visibility decisions use mainland Portugal, including DST.
+  const portugalClock = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Lisbon", year: "numeric", month: "2-digit",
+    day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+  });
+
+  function menuDisponivel(menu, agora = new Date()) {
+    const p = Object.fromEntries(portugalClock.formatToParts(agora)
+      .map(part => [part.type, part.value]));
+    const hoje = `${p.year}-${p.month}-${p.day}`;
+    const minutos = Number(p.hour) * 60 + Number(p.minute);
+    const temPratos = ["sopa", "peixe", "carne", "sobremesa"].some(k => {
+      const prato = menu && menu.pratos && menu.pratos[k];
+      return prato && [prato.pt, prato.en].some(v =>
+        typeof v === "string" && v.trim().length > 0);
+    });
+    return Boolean(menu && menu.data === hoje && temPratos && minutos < 1290);
+  }
+
+  function mostrarDia(mostrar) {
+    const botao = root.querySelector('[data-p="dia"]');
+    const painel = document.getElementById("rb-p-dia");
+    if (!mostrar && botao.classList.contains("is-active")) {
+      root.querySelector('[data-p="carta"]').click();
+    }
+    botao.disabled = !mostrar;
+    for (const el of [botao, painel]) {
+      if (mostrar) el.style.removeProperty("display");
+      else el.style.setProperty("display", "none", "important");
+    }
+  }
+
   async function load() {
     tabs();
+    // Keep the day tab hidden until its date and content have been checked.
+    mostrarDia(false);
     const set = (id, html) => { const e = document.getElementById(id); if (e) e.innerHTML = html; };
-    try { set("rb-p-dia", diaSheet(await fetchJSON("menu_executivo.json").catch(() => null))); }
-    catch (e) { set("rb-p-dia", `<p class="rb-vazio">${esc(t.semdia)}</p>`); }
-    try { set("rb-p-carta", cartaSheet(await fetchJSON("restaurante.json"), "restaurante")); }
-    catch (e) { set("rb-p-carta", `<p class="rb-vazio">${esc(t.erro)}</p>`); }
-    try { set("rb-p-bar", cartaSheet(await fetchJSON("grevin.json"), "grevin")); }
-    catch (e) { set("rb-p-bar", `<p class="rb-vazio">${esc(t.erro)}</p>`); }
+    let menu = null;
+    let refreshPending = false;
+    let interacted = false;
+    root.querySelectorAll(".rb-tab").forEach(b =>
+      b.addEventListener("click", e => { if (e.isTrusted) interacted = true; }));
+
+    async function atualizarDia(inicial = false) {
+      if (refreshPending) return;
+      refreshPending = true;
+      try {
+        menu = await fetchJSON("menu_executivo.json");
+        set("rb-p-dia", diaSheet(menu));
+      } catch (e) {
+        menu = null;
+      } finally {
+        refreshPending = false;
+        const disponivel = menuDisponivel(menu);
+        mostrarDia(disponivel);
+        if (inicial && disponivel && !interacted) {
+          root.querySelector('[data-p="dia"]').click();
+        }
+      }
+    }
+
+    const verificar = () => mostrarDia(menuDisponivel(menu));
+    // Hide at closing time even when the page stays open.
+    setInterval(verificar, 1000);
+    // Pick up a menu published after this page was opened.
+    setInterval(() => atualizarDia(), 60000);
+    document.addEventListener("visibilitychange", () => {
+      verificar();
+      if (!document.hidden) atualizarDia();
+    });
+    window.addEventListener("pageshow", verificar);
+
+    await Promise.all([
+      atualizarDia(true),
+      fetchJSON("restaurante.json")
+        .then(data => set("rb-p-carta", cartaSheet(data, "restaurante")))
+        .catch(() => set("rb-p-carta", `<p class="rb-vazio">${esc(t.erro)}</p>`)),
+      fetchJSON("grevin.json")
+        .then(data => set("rb-p-bar", cartaSheet(data, "grevin")))
+        .catch(() => set("rb-p-bar", `<p class="rb-vazio">${esc(t.erro)}</p>`))
+    ]);
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", load);
   else load();
