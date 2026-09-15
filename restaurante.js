@@ -203,6 +203,16 @@
     let menu = null;
     let refreshPending = false;
     let interacted = false;
+    let requestedTab = location.hash.slice(1);
+    const selectLinkedTab = () => {
+      requestedTab = location.hash.slice(1);
+      if (!['dia','carta','bar'].includes(requestedTab)) return;
+      const tab = root.querySelector('[data-p="' + requestedTab + '"]');
+      if (tab && !tab.disabled) tab.click();
+      else if (requestedTab === 'dia') root.querySelector('[data-p="carta"]').click();
+    };
+    selectLinkedTab();
+    window.addEventListener('hashchange', () => { interacted = true; selectLinkedTab(); });
     root.querySelectorAll(".rb-tab").forEach(b =>
       b.addEventListener("click", e => { if (e.isTrusted) interacted = true; }));
 
@@ -218,7 +228,7 @@
         refreshPending = false;
         const disponivel = menuDisponivel(menu);
         mostrarDia(disponivel);
-        if (inicial && disponivel && !interacted) {
+        if (inicial && disponivel && !interacted && (!requestedTab || requestedTab === 'dia')) {
           root.querySelector('[data-p="dia"]').click();
         }
       }
