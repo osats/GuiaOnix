@@ -1,0 +1,33 @@
+HOTEL ONIX — GUIA E EMENTAS / NOVA APRESENTAÇÃO
+
+Abrir PREVISUALIZAR.html para percorrer a proposta sem ligação à Internet.
+A pré-visualização usa os dados das cartas e massagens do ZIP recebido e a
+última ementa completa disponível nesse ZIP: 12/09/2026. É uma amostra fixa.
+
+Os ficheiros index.html, guia.html, hotel.html, restaurante.html e massagens.html,
+e as respetivas versões EN/FR/ES, constituem o guia para publicação.
+Restaurante e massagens continuam a ler os JSON publicados pela app em
+https://osats.github.io/EmentaOnix/ .
+
+Alterações:
+- Modo escuro em verde quase preto, texto marfim e detalhes dourados.
+  Impressão com fundo claro.
+- Página inicial com fotografia de Viseu e quatro acessos.
+- Guia com seis cartões fotográficos, duração/tipo de passeio, ligações
+  às etapas e regresso à seleção de roteiros.
+- Diretório com hierarquia tipográfica e horários destacados.
+- Ementas redesenhadas, logótipo oficial, categorias numeradas e atalhos.
+- Bar Grevin em bordô; massagens com o símbolo original da tabela anterior.
+- Apresentação dos preços das massagens com cêntimos.
+- Impressão do restaurante limitada ao separador selecionado.
+- Navegação por teclado nos separadores, foco visível e adaptação móvel.
+
+Os preços, pratos, tratamentos, percursos e dados operacionais não foram
+editados. A app Streamlit não faz parte desta alteração: o seu editor e os
+seus mecanismos de publicação mantêm o funcionamento anterior.
+As traduções em falta nos dados mantêm a alternativa portuguesa existente.
+
+Para atualizar o guia existente, copiar o conteúdo desta pasta para a pasta
+que já contém o index.html do guia, mantendo as pastas assets e os ficheiros
+CSS/JS juntos. Não é necessário publicar PREVISUALIZAR.html ou LEIA-ME.txt.
+Nenhuma publicação no GitHub foi efetuada nesta intervenção.

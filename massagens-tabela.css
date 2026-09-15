@@ -1,0 +1,37 @@
+/* Massagens — estilo original (folha branca elegante), agora JSON-driven.
+   Boa impressão em folha branca. */
+.mtab{
+  background:#fff; color:#2b2b2b; border-radius:10px; box-shadow:0 8px 34px rgba(0,0,0,.38);
+  max-width:720px; margin:6px auto 18px; padding:34px 40px 30px;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+.mtab .m-header{text-align:center; margin-bottom:26px}
+.mtab .m-header h2{
+  font-family:Georgia,'Times New Roman',serif; font-size:30px; font-weight:400;
+  letter-spacing:6px; color:#3a3a3a; margin:0; text-transform:uppercase;
+}
+.mtab .m-rule{width:60px; height:2px; background:#b8a98c; margin:10px auto 0}
+.mtab .m-item{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  padding:9px 0; border-bottom:.5px solid #e6e2d8;
+}
+.mtab .m-info{padding-right:16px; min-width:0}
+.mtab .m-name{font-size:16px; font-weight:500; color:#2b2b2b}
+.mtab .m-name .m-dur{font-size:12px; font-weight:400; color:#a09883; margin-left:8px; white-space:nowrap}
+.mtab .m-desc{font-size:12px; color:#857e6f; margin-top:2px; line-height:1.35}
+.mtab .m-price{font-size:16px; font-weight:500; color:#2b2b2b; white-space:nowrap; padding-left:8px}
+.mtab .m-section{font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#857e6f; margin:20px 0 4px}
+.mtab .m-couple{margin-top:14px; padding-top:10px; border-top:1.5px solid #cfc7b4}
+.mtab .m-footer{margin-top:26px; text-align:center}
+.mtab .m-agenda{font-size:15px; font-weight:500; letter-spacing:3px; color:#3a3a3a; text-transform:uppercase}
+.mtab .m-marc{font-size:12px; color:#857e6f; margin-top:6px; letter-spacing:.5px}
+.mtab .m-idioma-nota{font-size:11px; color:#a09883; text-align:center; margin-bottom:10px}
+@media(max-width:560px){ .mtab{padding:24px 20px} .mtab .m-header h2{font-size:24px; letter-spacing:4px} }
+@media print{
+  .mtab{box-shadow:none; border-radius:0; max-width:100%; margin:0; padding:10mm}
+}
+
+/* Símbolo recuperado da tabela de massagens anterior. */
+.mtab .m-logo{display:block;width:auto;height:110px;max-width:100%;object-fit:contain;margin:0 auto 18px}
+@media print{.mtab .m-logo{height:26mm}}

@@ -1,0 +1,71 @@
+/* Hotel Onix — aspeto "carta PDF" para ementas, cartas e bar.
+   Restaurante = folha creme; Bar Grevin = folha bordô escura (Wine Bar).
+   Alergénios com SÍMBOLOS (imagens), não letras. */
+.pm-sheet{
+  --pm-ink:#2b2b2b; --pm-gold:#b08a4e; --pm-cream:#f3ede2; --pm-gray:#8c8477;
+  --pm-line:#ddd2bf; --pm-head:#2c2c2c; --pm-legend:#6a6357;
+  background:var(--pm-cream); color:var(--pm-ink); border-radius:12px; overflow:hidden;
+  font-family:'Inter',Arial,sans-serif; box-shadow:0 8px 34px rgba(0,0,0,.38); margin:6px 0 18px;
+}
+.pm-header{background:var(--pm-head); display:flex; justify-content:space-between; align-items:center; padding:18px 26px}
+.pm-brand{font-family:'Playfair Display',Georgia,serif; font-size:22px; color:#fff; line-height:1}
+.pm-brand small{display:block; font-size:8px; letter-spacing:4px; color:var(--pm-gold); margin-top:4px; font-family:Arial,sans-serif}
+.pm-head-right{text-align:right}
+.pm-cat-name{font-size:12px; letter-spacing:2.5px; color:#fff; text-transform:uppercase}
+.pm-hours{font-size:11px; letter-spacing:1px; color:var(--pm-gold); margin-top:3px}
+.pm-body{padding:24px 28px 20px}
+.pm-titlerow{display:flex; justify-content:space-between; align-items:flex-end; gap:12px}
+.pm-title{font-family:'Playfair Display',Georgia,serif; font-size:34px; color:var(--pm-ink); margin:0; line-height:1}
+.pm-subtitle{font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color:var(--pm-gray); margin-top:7px}
+.pm-winebar{font-family:'Playfair Display',Georgia,serif; font-style:italic; font-size:20px; color:var(--pm-gold); margin-top:8px}
+.pm-tag{font-size:10px; letter-spacing:1.5px; color:var(--pm-gold); text-transform:uppercase; white-space:nowrap}
+.pm-rule{height:2px; width:54px; background:var(--pm-gold); margin:12px 0 16px}
+.pm-cols{column-count:2; column-gap:34px}
+.pm-catblock{break-inside:avoid; -webkit-column-break-inside:avoid; margin-bottom:6px}
+.pm-cat{font-family:'Playfair Display',Georgia,serif; font-size:19px; color:var(--pm-gold);
+  border-bottom:1px solid var(--pm-line); padding-bottom:5px; margin:8px 0 8px}
+.pm-reg{font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--pm-gold); opacity:.75; margin:10px 0 2px}
+.pm-item{display:flex; align-items:flex-start; gap:10px; padding:6px 0}
+.pm-item-main{flex:1; min-width:0}
+.pm-name{font-weight:700; font-size:13.5px; color:var(--pm-ink)}
+.pm-en{font-size:11px; color:var(--pm-gray); margin-top:1px}
+.pm-desc{font-size:11px; color:var(--pm-gray); margin-top:1px}
+.pm-als{display:flex; gap:4px; flex-wrap:wrap; align-items:center; margin-top:4px}
+.pm-al{width:16px; height:16px; border-radius:50%; flex:0 0 auto; display:inline-block; object-fit:cover}
+.pm-price{font-weight:700; color:var(--pm-gold); white-space:nowrap; font-size:13.5px; padding-top:1px; text-align:right}
+.pm-half{color:var(--pm-gray); font-weight:600; font-size:11px}
+.pm-note{border:1px solid var(--pm-line); border-radius:8px; padding:12px 14px; margin:8px 0 4px; font-size:12px; color:var(--pm-gray)}
+.pm-footer{border-top:1px solid var(--pm-line); margin-top:16px; padding-top:12px}
+.pm-legend{display:flex; flex-wrap:wrap; gap:6px 14px; font-size:10px; color:var(--pm-legend); align-items:center}
+.pm-legend span{display:inline-flex; align-items:center}
+.pm-legend .pm-al{width:14px; height:14px; margin-right:5px}
+.pm-legal{font-size:10px; color:var(--pm-gray); margin-top:8px}
+
+/* ── Bar Grevin — tema escuro (Wine Bar) ──────────────────────────────────── */
+.pm-sheet.pm-grevin{
+  --pm-ink:#f1e7d7; --pm-gold:#c6a15a; --pm-cream:#3b0d11; --pm-gray:#b39a86;
+  --pm-line:#6b3b40; --pm-head:#320a0e; --pm-legend:#b39a86;
+  background:radial-gradient(circle at 78% 20%, #5a1a20 0%, #3b0d11 42%);
+}
+
+/* ── Ementa do dia — folha elegante ───────────────────────────────────────── */
+.pm-day{max-width:540px; margin:0 auto; text-align:center}
+.pm-day .pm-eyebrow{font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--pm-gold); margin-bottom:2px}
+.pm-day .pm-day-title{font-family:'Playfair Display',Georgia,serif; font-size:30px; margin:0 0 2px}
+.pm-day .pm-day-date{font-size:11px; letter-spacing:1px; color:var(--pm-gray); text-transform:capitalize}
+.pm-day .pm-price-big{font-family:'Playfair Display',Georgia,serif; font-size:40px; color:var(--pm-gold); margin:12px 0 6px}
+.pm-day .pm-day-rule{width:44px; height:2px; background:var(--pm-gold); margin:10px auto 16px}
+.pm-day-course{padding:13px 0; border-top:1px solid var(--pm-line)}
+.pm-day-course:first-of-type{border-top:none}
+.pm-day-rot{font-size:10.5px; letter-spacing:2.5px; text-transform:uppercase; color:var(--pm-gold); margin-bottom:3px}
+.pm-day-nome{font-family:'Playfair Display',Georgia,serif; font-size:18px; color:var(--pm-ink)}
+.pm-day-en{font-size:11.5px; color:var(--pm-gray); font-style:italic; margin-top:1px}
+.pm-day .pm-als{justify-content:center; margin-top:6px}
+.pm-day-note{font-size:11px; color:var(--pm-gray); margin-top:16px; line-height:1.5}
+
+@media(max-width:700px){
+  .pm-cols{column-count:1}
+  .pm-title{font-size:27px}
+  .pm-header{padding:14px 18px}
+  .pm-body{padding:18px 18px}
+}
